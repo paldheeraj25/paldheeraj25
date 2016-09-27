@@ -1,0 +1,14 @@
+<ion-view view-title="Account">
+  <ion-content>
+    <ion-list>
+    <ion-toggle  ng-model="AccountCtrl.settings.enableFriends">
+        Light Saving Mode
+    </ion-toggle>
+    </ion-list>
+    <div class='logout-button'>
+      <button class="button button-assertive" ng-click="AccountCtrl.logout()">
+        logout
+      </button>
+    </div>
+  </ion-content>
+</ion-view>

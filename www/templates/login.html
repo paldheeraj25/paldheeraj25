@@ -1,0 +1,29 @@
+<ion-view view-title = "login" hide-nav-bar='true' class='login'>
+	<ion-content class = "md-inline-form inputdemoBasicUsage user-input-auth">
+		<md-content layout-padding="">
+		    <div class='user-auth-input'>
+		      <form name="userForm">
+		        <div layout-gt-sm="row">
+		          <md-input-container class="md-block" flex-gt-sm="">
+                    <md-icon ng-style="{color: font.color}" aria-label="email" class="material-icons step ng-binding md-36" style="color: #e04343;">
+          			email
+        			</md-icon>
+		            <label style="color: #0c2b1d;">Email</label>
+		            <input type='email' ng-model="login.user.email" class="user-email-auth">
+		          </md-input-container>
+		       </div>
+		       <div layout-gt-sm="row">
+		          <md-input-container class="md-block" flex-gt-sm="">
+		            <md-icon ng-style="{color: font.color}" aria-label="home" class="material-icons step ng-binding md-36" style="color: #e04343;">home</md-icon>
+		            <label style="color: #0c2b1d;">Password</label>
+		            <input type='password' name ="password" ng-model="login.user.password">
+		          </md-input-container>
+		       </div>
+		          <button class="button button-block button-assertive login" ng-click="login.authenticateUser()">
+  					Unlock
+				  </button>
+		      </form>
+		    </div>
+		</md-content>
+	</ion-content>
+</ion-view>

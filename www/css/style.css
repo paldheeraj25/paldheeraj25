@@ -1,0 +1,64 @@
+/* Empty. Add your own CSS if you like */
+ion-content{
+	background: rgba(0,0,0,0.12);
+}
+.bar-stable.home-nav-bar{
+	background: teal;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
+}
+.tab-nav.tabs{
+	background: teal;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
+}
+.icon.ion-ios-chatboxes-outline{
+	color: black;
+}
+.icon.ion-ios-home{
+	color: black;
+}
+.ion-ios-gear{
+	color: black;
+}
+.icon.ion-ios-chatboxes{
+	color: black;
+}
+.tab-title{
+	color: black;
+}
+.list{
+	padding-top: 20px
+}
+.item-avatar.item-complex{
+	margin-top: 8px;
+}
+.item-remove-animate.item-avatar.item-icon-right.item.item-complex.item-right-editable{
+	box-shadow: 5px 1px 10px -2px;
+}
+.login{
+	background: teal;
+}
+.layout-padding._md{
+	background: transparent;
+	padding: 100px;
+}
+.md-block.user-pass-auth {
+  border-bottom-style: solid !important;
+  border-bottom-color: rgba(0,0,0,0.12) !important;
+}
+md-input-container.md-input-focused.user-pass-auth {
+  border-bottom-style: solid !important;
+  border-bottom-color: #ec745d !important;
+}
+.button.button-block.button-assertive.login{
+	background-color: #e04343;
+	box-shadow: 2px 2px 3px 0px black;
+}
+.list{
+	padding: 15px;
+}
+.item-complex .item-content, .item-radio .item-content{
+	background-color: #e1a13f;
+}
+.logout-button{
+	padding: 15px;
+}
