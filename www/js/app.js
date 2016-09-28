@@ -110,6 +110,11 @@ homeAppModule.run(function($ionicPlatform) {
             },
             roomId: function($stateParams){
               return $stateParams.roomId;
+            },
+            roomDetail: function($stateParams, Auth, HomeDetailService){
+              return HomeDetailService.getRoomDetail(Auth.requireAuth().uid, $stateParams.roomId).then(function(data){
+                return data;
+              });
             }
           }
         }

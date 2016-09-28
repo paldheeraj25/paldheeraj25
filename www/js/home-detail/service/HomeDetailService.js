@@ -6,7 +6,6 @@ homeAppService.factory('HomeDetailService', function(DatabaseConfig) {
   var roomRef = firebase.database().ref();
   return {
     getRoomDetail: function(id, roomId){
-        console.log(roomId);
       return roomRef.child('room').child(id).child(roomId).once('value').then(function(snapshot) {
         return snapshot.val();
       });

@@ -62,3 +62,8 @@ md-input-container.md-input-focused.user-pass-auth {
 .logout-button{
 	padding: 15px;
 }
+.panel-body.room-detail{
+	background: white;
+	box-shadow: 2px 2px 3px 0px #9e9797;
+
+}

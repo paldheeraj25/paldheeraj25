@@ -1,10 +1,10 @@
 'use strict';
-homeAppController.controller('HomeDetailController', function($scope, roomId, auth, HomeService, DatabaseConfig, HomeDetailService) {
+homeAppController.controller('HomeDetailController', function(roomId, roomDetail) {
   var _instance = this;
   _instance.roomId = roomId;
-  DatabaseConfig.dataBaseInitialized();
-  _instance.user = auth;
-  HomeDetailService.getRoomDetail(_instance.user, _instance.roomId).then(function(data){
-    _instance.roomDetail = data;
-  });
+  console.log(roomDetail);
+  _instance.roomDetail = roomDetail;
+  _instance.toggleSwitch = function(deviceValue, deviceName){
+    console.log(deviceValue + ' ' +deviceName);
+  };
 });
