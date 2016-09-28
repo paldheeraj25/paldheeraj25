@@ -1,5 +1,5 @@
 'Use Strict';
-homeAppController.controller('LoginController', function($scope, $state, $ionicLoading, FURL, $firebaseArray, DatabaseConfig, Auth) {
+homeAppController.controller('LoginController', function($scope, $state, $ionicLoading, $ionicPopup, $firebaseArray, DatabaseConfig, Auth) {
   _instance = this;
   // database initialisation service
   DatabaseConfig.dataBaseInitialized();
@@ -22,14 +22,30 @@ homeAppController.controller('LoginController', function($scope, $state, $ionicL
     $ionicLoading.hide().then(function(){
     });
   };
+
+  _instance.showConfirm = function(message) {
+    var confirmPopup = $ionicPopup.confirm({
+      title: 'Login Error',
+      template: message
+    });
+    confirmPopup.then(function(res) {
+      return false;
+    });
+  };
   _instance.authenticateUser = function(){
     _instance.loadingShow();
-    return Auth.login(_instance.user.email, _instance.user.password).then(function(user){
+    Auth.login(_instance.user.email, _instance.user.password).then(function(result) {
       _instance.loadingHide();
-      if(user){
+      console.log(result);
+      if(result){
         _instance.user = {};
         $state.transitionTo('tab.home', true,{id: 'one'});
       }
+    }, function(error) {
+      _instance.loadingHide();
+      console.log(error);
+      // you can fetch the providers using this:
+      _instance.showConfirm(error.code);
     });
   };
 });
