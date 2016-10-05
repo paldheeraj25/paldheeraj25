@@ -62,15 +62,22 @@ homeAppModule.run(function($ionicPlatform) {
         params:{id: null},
         resolve: {
           auth: function($state, Auth){
-            if(!Auth.requireAuth()){
+            if(!Auth.requireAuth().uid){
               console.log('no user logged in');
-              $state.go('login');
+              return null;
+            }else{
+              return Auth.requireAuth().uid;
             }
           },
-          roomList: function(Auth){
-            return Auth.getUser(Auth.requireAuth().uid).then(function(data){
-              return data.rooms;
-            });
+          roomList: function(auth, Auth){
+            console.log(auth);
+            if(auth === null){
+              return null;
+            } else {
+              return  Auth.getUser(Auth.requireAuth().uid).then(function(data){
+                  return data.rooms;
+              });
+            }
           }
         }
       }
@@ -102,19 +109,28 @@ homeAppModule.run(function($ionicPlatform) {
           controller: 'HomeDetailController as homeDetail',
           resolve: {
             auth: function($state, Auth){
-              if(!Auth.requireAuth()){
+              if(!Auth.requireAuth().uid){
                 console.log('no user logged in');
-                $state.go('login');
+                return null;
+              } else{
+                return Auth.requireAuth().uid;
               }
-              return Auth.requireAuth().uid;
             },
-            roomId: function($stateParams){
-              return $stateParams.roomId;
+            roomId: function($stateParams, $state, Auth){
+              if(angular.isUndefined(Auth.requireAuth.uid)){
+                return null;
+              } else {
+                return $stateParams.roomId;
+              }
             },
-            roomDetail: function($stateParams, Auth, HomeDetailService){
-              return HomeDetailService.getRoomDetail(Auth.requireAuth().uid, $stateParams.roomId).then(function(data){
-                return data;
-              });
+            roomDetail: function($stateParams, auth, Auth, HomeDetailService){
+              if(auth === null){
+                return null;
+              } else{
+                return HomeDetailService.getRoomDetail(Auth.requireAuth().uid, $stateParams.roomId).then(function(data){
+                  return data;
+                });
+              }
             }
           }
         }
@@ -129,9 +145,11 @@ homeAppModule.run(function($ionicPlatform) {
         controller: 'AccountController as AccountCtrl',
         resolve: {
           auth: function($state, Auth){
-            if(!Auth.requireAuth()){
+            if(!Auth.requireAuth().uid){
               console.log('no user logged in');
-              $state.go('login');
+              return null;
+            } else{
+              return Auth.requireAuth().uid;
             }
           }
         }

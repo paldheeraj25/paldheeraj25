@@ -1,5 +1,8 @@
 'Use Strict';
-homeAppController.controller('HomeController', function($scope, $state, HomeService, roomList) {
+homeAppController.controller('HomeController', function($scope, $state, auth, HomeService, roomList) {
+  if(auth === null){
+    $state.go('login');
+  }
   var _instance = this;
   $scope.chats = roomList;
 

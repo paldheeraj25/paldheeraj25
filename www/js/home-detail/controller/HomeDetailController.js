@@ -1,13 +1,13 @@
 'use strict';
-homeAppController.controller('HomeDetailController', function($http, roomId, roomDetail) {
+homeAppController.controller('HomeDetailController', function($http, $state, auth, roomId, roomDetail) {
   var _instance = this;
   _instance.roomId = roomId;
-  console.log(roomDetail);
+  if(auth === null){
+    $state.go('login');
+  }
   _instance.roomDetail = roomDetail;
   _instance.toggleSwitch = function(deviceValue, deviceName){
     if(deviceName === 'CFL' && deviceValue === true){
-      //$http.jsonp('http://192.168.1.4/gpio.php?off=OFF');
-      //http://192.168.1.3/gpio2.php?off=OFF?&callback=JSON_CALLBACK
       $http.jsonp('https://myxwzzgg.p71.weaved.com/gpio2.php?off=OFF&callback=JSON_CALLBACK').success(function(data){
         console.log('success');
         console.log(data);
@@ -16,7 +16,6 @@ homeAppController.controller('HomeDetailController', function($http, roomId, roo
 	      console.log('error')
 	    });
     } else if(deviceName === 'CFL' && deviceValue === false){
-      //$http.jsonp('http://192.168.1.4/gpio.php?off=ON');
       $http.jsonp('https://myxwzzgg.p71.weaved.com/gpio2.php?on=ON&callback=JSON_CALLBACK').success(function(data){
        console.log('success');
 	    })

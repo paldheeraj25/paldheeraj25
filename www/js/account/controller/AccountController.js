@@ -1,5 +1,8 @@
 'use strict';
-homeAppController.controller('AccountController', function($scope, $rootScope, $state, FURL, $firebaseAuth, $firebaseObject, $firebaseArray, DatabaseConfig, Auth) {
+homeAppController.controller('AccountController', function($scope, $rootScope, $state, auth, Auth, DatabaseConfig) {
+  if (auth === null) {
+    $state.go('login');
+  }
   var _instance = this;
   DatabaseConfig.dataBaseInitialized();
   _instance.settings = {
