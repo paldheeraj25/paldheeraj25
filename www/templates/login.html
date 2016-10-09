@@ -22,6 +22,9 @@
 		          <button class="button button-block button-assertive login" ng-click="login.authenticateUser()">
   					Unlock
 				  </button>
+				  <div class="text-center" style="color: #e04343; font-size: medium;" ng-if="login.loginErrorMessage">
+				    <span> <strong>Authentication error</strong> </span>
+				  </div>
 		      </form>
 		    </div>
 		</md-content>

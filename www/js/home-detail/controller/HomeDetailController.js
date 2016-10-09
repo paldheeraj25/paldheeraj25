@@ -8,7 +8,7 @@ homeAppController.controller('HomeDetailController', function($http, $state, aut
   _instance.roomDetail = roomDetail;
   _instance.toggleSwitch = function(deviceValue, deviceName){
     if(deviceName === 'CFL' && deviceValue === true){
-      $http.jsonp('https://myxwzzgg.p71.weaved.com/gpio2.php?off=OFF&callback=JSON_CALLBACK').success(function(data){
+      $http.jsonp('https://'+ _instance.roomDetail.domain + '/gpio2.php?off=OFF&callback=JSON_CALLBACK').success(function(data){
         console.log('success');
         console.log(data);
 	    })
@@ -16,7 +16,7 @@ homeAppController.controller('HomeDetailController', function($http, $state, aut
 	      console.log('error')
 	    });
     } else if(deviceName === 'CFL' && deviceValue === false){
-      $http.jsonp('https://myxwzzgg.p71.weaved.com/gpio2.php?on=ON&callback=JSON_CALLBACK').success(function(data){
+      $http.jsonp('https://'+ _instance.roomDetail.domain + '/gpio2.php?on=ON&callback=JSON_CALLBACK').success(function(data){
        console.log('success');
 	    })
 	    .error(function () {

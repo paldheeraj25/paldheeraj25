@@ -36,6 +36,7 @@ homeAppController.controller('LoginController', function($scope, $state, $ionicL
     _instance.loadingShow();
     Auth.login(_instance.user.email, _instance.user.password).then(function(result) {
       _instance.loadingHide();
+      _instance.loginErrorMessage = false;
       console.log(result);
       if(result){
         _instance.user = {};
@@ -45,7 +46,8 @@ homeAppController.controller('LoginController', function($scope, $state, $ionicL
       _instance.loadingHide();
       console.log(error);
       // you can fetch the providers using this:
-      _instance.showConfirm(error.code);
+      _instance.loginErrorMessage = true;
+      //_instance.showConfirm(error.code);
     });
   };
 });
