@@ -3,27 +3,39 @@ ion-content{
 	background: rgba(0,0,0,0.12);
 }
 .bar-stable.home-nav-bar{
-	background: teal;
+	background: black;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
 }
+.bar.bar-stable .title {
+	color: #ffffff;
+}
+.bar-stable .button.button-clear {
+	color: #ffffff;
+}
 .tab-nav.tabs{
-	background: teal;
+	background: black;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
 }
 .icon.ion-ios-chatboxes-outline{
 	color: black;
 }
 .icon.ion-ios-home{
-	color: black;
+	color: #ffffff;
 }
-.ion-ios-gear{
-	color: black;
+.icon.ion-ios-gear{
+	color: #ffffff;
+}
+.icon.ion-ios-gear-outline {
+	color: #ffffff;
+}
+.icon.ion-ios-home-outline {
+	color: #ffffff;
 }
 .icon.ion-ios-chatboxes{
 	color: black;
 }
 .tab-title{
-	color: black;
+	color: #ffffff;
 }
 .list{
 	padding-top: 20px
@@ -35,7 +47,7 @@ ion-content{
 	box-shadow: 5px 1px 10px -2px;
 }
 .login{
-	background: teal;
+	background: whitesmoke;
 }
 .layout-padding._md{
 	background: transparent;
@@ -45,9 +57,16 @@ ion-content{
   border-bottom-style: solid !important;
   border-bottom-color: rgba(0,0,0,0.12) !important;
 }
-md-input-container.md-input-focused.user-pass-auth {
-  border-bottom-style: solid !important;
-  border-bottom-color: #ec745d !important;
+
+.md-inline-form.inputdemoBasicUsage.user-input-auth.scroll-content.ionic-scroll{
+  background: url(../img/homeLanding.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.user-auth-input {
+  opacity: .88;
 }
 .button.button-block.button-assertive.login{
 	background-color: #e04343;
@@ -57,13 +76,46 @@ md-input-container.md-input-focused.user-pass-auth {
 	padding: 15px;
 }
 .item-complex .item-content, .item-radio .item-content{
-	background-color: #e1a13f;
+	background-color: #ffffff;
 }
 .logout-button{
 	padding: 15px;
 }
 .panel-body.room-detail{
-	background: white;
+	background: #ffffff;
 	box-shadow: 2px 2px 3px 0px #9e9797;
 
+}
+
+.form-login {
+    background-color: #EDEDED;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 15px;
+    border-color:#d2d2d2;
+    border-width: 5px;
+    box-shadow:5px 10px 40px #a5a5a5;
+}
+
+h4 { 
+ border:0 solid #fff; 
+ border-bottom-width:1px;
+ padding-bottom:10px;
+ text-align: center;
+}
+
+.form-control {
+    border-radius: 10px;
+}
+
+.wrapper {
+    text-align: center;
+}
+
+.login-btn {
+    padding: 0px 10% 0px 10%;
+    color: green;
+    background: green;
 }

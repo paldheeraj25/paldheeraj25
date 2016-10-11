@@ -3,28 +3,25 @@
 		<md-content layout-padding="">
 		    <div class='user-auth-input'>
 		      <form name="userForm">
-		        <div layout-gt-sm="row">
-		          <md-input-container class="md-block" flex-gt-sm="">
-                    <md-icon ng-style="{color: font.color}" aria-label="email" class="material-icons step ng-binding md-36" style="color: #e04343;">
-          			email
-        			</md-icon>
-		            <label style="color: #0c2b1d;">Email</label>
-		            <input type='email' ng-model="login.user.email" class="user-email-auth">
-		          </md-input-container>
-		       </div>
-		       <div layout-gt-sm="row">
-		          <md-input-container class="md-block" flex-gt-sm="">
-		            <md-icon ng-style="{color: font.color}" aria-label="home" class="material-icons step ng-binding md-36" style="color: #e04343;">home</md-icon>
-		            <label style="color: #0c2b1d;">Password</label>
-		            <input type='password' name ="password" ng-model="login.user.password">
-		          </md-input-container>
-		       </div>
-		          <button class="button button-block button-assertive login" ng-click="login.authenticateUser()">
-  					Unlock
-				  </button>
-				  <div class="text-center" style="color: #e04343; font-size: medium;" ng-if="login.loginErrorMessage">
-				    <span> <strong>Authentication error</strong> </span>
-				  </div>
+		        <div class="row">
+			        <div class="col-md-offset-5 col-md-3">
+			            <div class="form-login">
+			            <h4>Welcome Home</h4>
+			            <input type="email" id="userName" class="form-control input-sm chat-input" placeholder="username" ng-model="login.user.email"/>
+			            </br>
+			            <input type="password" id="userPassword" class="form-control input-sm chat-input" placeholder="password" ng-model="login.user.password"/>
+			            </br>
+			            <div class="wrapper">
+			            <button class="button button-balanced" ng-click="login.authenticateUser()">
+  							Unlock
+						</button>
+						 <div class="text-center" style="color: #e04343; font-size: medium;" ng-if="login.loginErrorMessage">
+-                                   <span> <strong>Authentication error</strong> </span>
+-                                 </div>
+			            </div>
+			            </div>
+			        </div>
+			    </div>
 		      </form>
 		    </div>
 		</md-content>
