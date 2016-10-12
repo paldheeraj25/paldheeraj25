@@ -49,10 +49,7 @@ ion-content{
 .login{
 	background: whitesmoke;
 }
-.layout-padding._md{
-	background: transparent;
-	padding: 100px;
-}
+
 .md-block.user-pass-auth {
   border-bottom-style: solid !important;
   border-bottom-color: rgba(0,0,0,0.12) !important;
@@ -67,6 +64,8 @@ ion-content{
 }
 .user-auth-input {
   opacity: .88;
+  padding-left: 25%;
+  padding-top: 25%;
 }
 .button.button-block.button-assertive.login{
 	background-color: #e04343;

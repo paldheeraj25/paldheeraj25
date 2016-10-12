@@ -9,6 +9,11 @@ homeAppService.factory('HomeDetailService', function(DatabaseConfig) {
       return roomRef.child('room').child(id).child(roomId).once('value').then(function(snapshot) {
         return snapshot.val();
       });
+    },
+    getDomain: function (id, roomId) {
+      return roomRef.child('room').child(id).child(roomId).once('value').then(function(snapshot){
+        return snapshot.val();
+      });
     }
   };
 });
