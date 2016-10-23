@@ -1,0 +1,14 @@
+<ion-view view-title="Power">
+  <ion-content class="padding">
+    <div class="panel panel-default">
+      <div class="panel-body room-detail">
+        <ion-toggle  ng-model="power.switchOffAll" ng-click="power.powerOffAll(power.switchOffAll)">
+            Power Off All
+        </ion-toggle>
+        <ion-toggle  ng-model="power.switchOnAll" ng-click="power.powerOnAll(power.switchOnAll)">
+            Power On All
+        </ion-toggle>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

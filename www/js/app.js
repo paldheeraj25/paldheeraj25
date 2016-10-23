@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-var homeAppModule = angular.module('starter', ['ionic', 'starter.controllers', 'firebase', 'starter.services', 'ngMaterial', 'ngMessages']);
+var homeAppModule = angular.module('starter', ['ionic', 'starter.controllers', 'firebase', 'starter.services', 'ngMaterial', 'ngMessages', 'underscore']);
 var homeAppController = angular.module('starter.controllers', []);
 var homeAppService = angular.module('starter.services', []);
 homeAppModule.run(function($ionicPlatform) {
@@ -84,17 +84,19 @@ homeAppModule.run(function($ionicPlatform) {
     }
   })
 
-  .state('tab.chats', {
-      url: '/chats',
+  .state('tab.power', {
+      url: '/power',
       views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl',
+        'tab-power': {
+          templateUrl: 'templates/tab-power.html',
+          controller: 'PowerController as power',
           resolve: {
             auth: function($state, Auth){
-              if(!Auth.requireAuth()){
+              if(!Auth.requireAuth().uid){
                 console.log('no user logged in');
-                $state.go('login');
+                return null;
+              }else{
+                return Auth.requireAuth().uid;
               }
             }
           }
