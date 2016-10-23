@@ -15,6 +15,8 @@ homeAppController.controller('HomeDetailController', function($http, $state, $st
       var onDevice = {};
       onDevice.deviceName = deviceName;
       onDevice.deviceValue = deviceValue;
+      onDevice.deviceDomain = roomDetail.domain;
+      onDevice.deviceUrlParam = 'cfloff';
       $rootScope.onDevices.push(onDevice);
       console.log($rootScope.onDevices);
       $http.jsonp('https://'+ roomDetail.domain + '/gpio2.php?cflon=OFF&callback=JSON_CALLBACK').success(function(data){
@@ -38,6 +40,8 @@ homeAppController.controller('HomeDetailController', function($http, $state, $st
       var onDevice = {};
       onDevice.deviceName = deviceName;
       onDevice.deviceValue = deviceValue;
+      onDevice.deviceDomain = roomDetail.domain;
+      onDevice.deviceUrlParam = 'tubelightoff';
       $rootScope.onDevices.push(onDevice);
       $http.jsonp('https://'+ roomDetail.domain + '/gpio2.php?tubelighton=ON&callback=JSON_CALLBACK').success(function(data){
        console.log('success');
