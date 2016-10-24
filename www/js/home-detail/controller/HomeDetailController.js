@@ -1,5 +1,5 @@
 'use strict';
-homeAppController.controller('HomeDetailController', function($http, $state, $stateParams, $rootScope, auth, roomId, roomDetail, HomeDetailService ) {
+  homeAppController.controller('HomeDetailController', function($http, $state, $stateParams, $rootScope, auth, roomId, roomDetail, HomeDetailService ) {
   var _instance = this;
   _instance.userId = auth;
   _instance.roomId = roomId;
@@ -21,7 +21,7 @@ homeAppController.controller('HomeDetailController', function($http, $state, $st
       console.log($rootScope.onDevices);
       $http.jsonp('https://'+ roomDetail.domain + '/gpio2.php?cflon=OFF&callback=JSON_CALLBACK').success(function(data){
         console.log('success');
-        console.log(data);
+        HomeDetailService.setStatusOn(_instance.userId, $stateParams.roomId, 'cfl');
       })
       .error(function (error) {
         console.log('error');
@@ -32,6 +32,7 @@ homeAppController.controller('HomeDetailController', function($http, $state, $st
       console.log($rootScope.onDevices);
       $http.jsonp('https://'+ roomDetail.domain + '/gpio2.php?cfloff=ON&callback=JSON_CALLBACK').success(function(data){
        console.log('success');
+       HomeDetailService.setStatusOff(_instance.userId, $stateParams.roomId, 'cfl');
       })
       .error(function () {
         console.log('error');
@@ -45,6 +46,7 @@ homeAppController.controller('HomeDetailController', function($http, $state, $st
       $rootScope.onDevices.push(onDevice);
       $http.jsonp('https://'+ roomDetail.domain + '/gpio2.php?tubelighton=ON&callback=JSON_CALLBACK').success(function(data){
        console.log('success');
+       HomeDetailService.setStatusOn(_instance.userId, $stateParams.roomId, 'tubelight');
       })
       .error(function () {
         console.log('error');
@@ -53,6 +55,7 @@ homeAppController.controller('HomeDetailController', function($http, $state, $st
       $rootScope.onDevices.splice(_.indexOf($rootScope.onDevices, _.findWhere($rootScope.onDevices,{deviceName: 'Tube Light'})));
       $http.jsonp('https://'+ roomDetail.domain + '/gpio2.php?tubelightoff=ON&callback=JSON_CALLBACK').success(function(data){
        console.log('success');
+       HomeDetailService.setStatusOff(_instance.userId, $stateParams.roomId, 'tubelight');
       })
       .error(function () {
         console.log('error');
