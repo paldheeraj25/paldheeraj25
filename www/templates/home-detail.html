@@ -3,7 +3,7 @@
     <div class="panel panel-default">
       <div class="panel-body room-detail">
         <ion-list ng-repeat="home in homeDetail.roomDetail.gpio">
-          <ion-toggle  ng-model="home.value" ng-click="homeDetail.toggleSwitch(home.value, home.name)">
+          <ion-toggle  ng-model="homeDetail.devices[home.value]" ng-click="homeDetail.toggleSwitch(homeDetail.devices[home.value], home.name)">
               {{home.name}}
           </ion-toggle>
         </ion-list>
