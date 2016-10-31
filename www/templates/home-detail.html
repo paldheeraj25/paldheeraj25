@@ -6,8 +6,45 @@
           <ion-toggle  ng-model="homeDetail.devices[home.value]" ng-click="homeDetail.toggleSwitch(homeDetail.devices[home.value], home.name)">
               {{home.name}}
           </ion-toggle>
+          <a class="button-icon ion-settings" ng-click='homeDetail.addTimer(homeDetail.devices[home.value], home.name, home.value)' ></a>
         </ion-list>
       </div>
     </div>
+    <script id="my-modal.html" type="text/ng-template">
+      <ion-modal-view>
+        <ion-header-bar class="bar-stable home-nav-bar">
+          <h1 class="title">Timer Settings</h1>
+          <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
+        </ion-header-bar>
+        <ion-content>
+        <div class="panel panel-default">
+        <div class="panel-body room-detail">
+          <ion-list>
+            <div class="item item-icon-left" ion-datetime-picker time ng-model="timeOn">
+                <i class="icon ion-ios-clock positive"></i>
+                Set On Timer :
+                <strong>{{timeOn| date: "H:mm"}}</strong>
+            </div>
+          </ion-list>
+          <ion-list>
+            <div class="item item-icon-left" ion-datetime-picker time ng-model="timeOff">
+                <i class="icon ion-ios-clock positive"></i>
+                Set Off Timer :
+                <strong>{{timeOff| date: "H:mm"}}</strong>
+            </div>
+          </ion-list>
+          <div class='row'>
+            <button class="button button-balanced" ng-click="setOnTimer(timeOn, roomId, modalDeviceDataValue)">
+              Start Timer
+            </button>&nbsp;
+            <button class="button button-dark" ng-click="setOffTimer(timeOff, roomId, modalDeviceDataValue)">
+              Stop Timer
+            </button>
+          </div>
+        </div>
+        </div>
+        </ion-content>
+      </ion-modal-view>
+    </script>
   </ion-content>
 </ion-view>

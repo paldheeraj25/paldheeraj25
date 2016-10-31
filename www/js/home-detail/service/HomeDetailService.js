@@ -1,3 +1,4 @@
+(function(){
 'use strict';
 homeAppService.factory('HomeDetailService', function(DatabaseConfig) {
   // Might use a resource here that returns a JSON array
@@ -27,3 +28,4 @@ homeAppService.factory('HomeDetailService', function(DatabaseConfig) {
     }
   };
 });
+})();

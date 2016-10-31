@@ -1,5 +1,6 @@
+(function(){
 'use strict';
-  homeAppController.controller('HomeDetailController', function($http, $state, $stateParams, $rootScope, $scope, auth, roomId, roomDetail, HomeDetailService ) {
+  homeAppController.controller('HomeDetailController', function($http, $state, $stateParams, $rootScope, $scope,  $ionicModal, auth, roomId, roomDetail, HomeDetailService) {
   var _instance = this;
   _instance.userId = auth;
   _instance.roomId = roomId;
@@ -9,11 +10,34 @@
   $rootScope.onDevices = [];
   _instance.roomDetail = roomDetail;
   _instance.devices = [];
+
+  $ionicModal.fromTemplateUrl('my-modal.html', {
+  scope: $scope,
+  animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+
+  $scope.setOnTimer = function(onTime, room, device){
+    console.log(onTime + ' ' + room  + ' ' + device);
+  };
+
+  $scope.setOffTimer = function(offTime, room, device){
+    console.log(offTime + ' ' + room  + ' ' + device);
+  };
   console.log(_instance.roomDetail);
   console.log(_instance.userId);
   _.each(_instance.roomDetail.gpio, function(device){
     _instance.devices[device.value] = Boolean(device.status);
   });
+
+  _instance.addTimer = function(value, name, deviceValue){
+    $scope.modalDeviceValue = value;
+    $scope.modalDeviceName = name;
+    $scope.modalDeviceDataValue = deviceValue;
+    $scope.roomId = $stateParams.roomId;
+    $scope.modal.show();
+  };
   _instance.toggleSwitch = function(deviceValue, deviceName){
     if(deviceName === 'CFL' && deviceValue === true){
       console.log(_instance.devices.cfl);
@@ -65,6 +89,9 @@
       .error(function () {
         console.log('error');
       });
+    } else{
+      console.log('yes');
     }
   };
 });
+}());

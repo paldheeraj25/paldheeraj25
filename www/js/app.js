@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-var homeAppModule = angular.module('starter', ['ionic', 'starter.controllers', 'firebase', 'starter.services', 'ngMaterial', 'ngMessages', 'underscore']);
+var homeAppModule = angular.module('starter', ['ionic', 'starter.controllers', 'firebase', 'starter.services', 'ngMaterial', 'ngMessages', 'underscore', "ion-datetime-picker"]);
 var homeAppController = angular.module('starter.controllers', []);
 var homeAppService = angular.module('starter.services', []);
 homeAppModule.run(function($ionicPlatform) {
