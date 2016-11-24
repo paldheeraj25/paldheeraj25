@@ -3,10 +3,19 @@
     <div class="panel panel-default">
       <div class="panel-body room-detail">
         <ion-list ng-repeat="home in homeDetail.roomDetail.gpio">
-          <ion-toggle  ng-model="homeDetail.devices[home.value]" ng-click="homeDetail.toggleSwitch(homeDetail.devices[home.value], home.name)">
+          <ion-toggle  ng-model="homeDetail.devices[home.value]" ng-click="homeDetail.toggleSwitch(homeDetail.devices[home.value], home)">
               {{home.name}}
           </ion-toggle>
           <a class="button-icon ion-settings" ng-click='homeDetail.addTimer(homeDetail.devices[home.value], home.name, home.value)' ></a>
+        </ion-list>
+      </div>
+      <br/>
+      <div class="panel panel-default">
+      <div class="panel-body room-detail">
+        <ion-list>
+          <ion-toggle  ng-model="homeDetail.allDevice" ng-click="homeDetail.allDeviceToggle(homeDetail.allDevice)">
+              All Device Action
+          </ion-toggle>
         </ion-list>
       </div>
     </div>

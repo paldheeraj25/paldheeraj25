@@ -10,7 +10,7 @@
   $rootScope.onDevices = [];
   _instance.roomDetail = roomDetail;
   _instance.devices = [];
-
+  _instance.getAllDevice = angular.copy(_instance.roomDetail.gpio);
   $ionicModal.fromTemplateUrl('my-modal.html', {
   scope: $scope,
   animation: 'slide-in-up'
@@ -38,7 +38,37 @@
     $scope.roomId = $stateParams.roomId;
     $scope.modal.show();
   };
-  _instance.toggleSwitch = function(deviceValue, deviceName){
+
+  _instance.allDeviceToggle = function(value){
+    console.log(value);
+    console.log(_instance.getAllDevice);
+    var getAllDevice = _.pluck(_instance.getAllDevice, "localUrl");
+    console.log(getAllDevice);
+    _.each(getAllDevice, function(device){
+       $http.jsonp('https://'+ roomDetail.domain + '/gpio2.php?device='+device +'&state='+value+'&callback=JSON_CALLBACK').success(function(data){
+        console.log(value +' is '+value);
+        HomeDetailService.setStatusOn(_instance.userId, $stateParams.roomId, 'cfl');
+      })
+      .error(function (error) {
+        console.log('failure');
+      });
+    });
+  };
+
+  _instance.toggleSwitch = function(deviceValue, device){
+    console.log(deviceValue);
+    console.log(device);
+    // new code irrespective of device
+    $http.jsonp('https://'+ roomDetail.domain + '/gpio2.php?device='+device.localUrl +'&state='+deviceValue+'&callback=JSON_CALLBACK').success(function(data){
+        console.log('success');
+        HomeDetailService.setStatusOn(_instance.userId, $stateParams.roomId, 'cfl');
+      })
+      .error(function (error) {
+        console.log('error');
+      });
+
+    //
+
     if(deviceName === 'CFL' && deviceValue === true){
       console.log(_instance.devices.cfl);
       var onDevice = {};
@@ -48,13 +78,20 @@
       onDevice.deviceUrlParam = 'cfloff';
       $rootScope.onDevices.push(onDevice);
       console.log($rootScope.onDevices);
-      $http.jsonp('https://'+ roomDetail.domain + '/gpio2.php?cflon=OFF&callback=JSON_CALLBACK').success(function(data){
+      $http.get('http://192.168.1.5/?led=ON').success(function(data){
         console.log('success');
-        HomeDetailService.setStatusOn(_instance.userId, $stateParams.roomId, 'cfl');
+        //HomeDetailService.setStatusOn(_instance.userId, $stateParams.roomId, 'cfl');
       })
       .error(function (error) {
         console.log('error');
       });
+      // $http.jsonp('https://'+ roomDetail.domain + '/gpio2.php?cflon=OFF&callback=JSON_CALLBACK').success(function(data){
+      //   console.log('success');
+      //   HomeDetailService.setStatusOn(_instance.userId, $stateParams.roomId, 'cfl');
+      // })
+      // .error(function (error) {
+      //   console.log('error');
+      // });
     } else if(deviceName === 'CFL' && deviceValue === false){
       console.log(_.findWhere($rootScope.onDevices,{deviceName: 'CFL'}));
       $rootScope.onDevices.splice(_.indexOf($rootScope.onDevices, _.findWhere($rootScope.onDevices,{deviceName: 'CFL'})));
