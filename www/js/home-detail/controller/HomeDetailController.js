@@ -42,10 +42,11 @@
   _instance.allDeviceToggle = function(value){
     console.log(value);
     console.log(_instance.getAllDevice);
-    var getAllDevice = _.pluck(_instance.getAllDevice, "localUrl");
+    var deviceValueBinary = value === true ? 1 : 0;
+    var getAllDevice = _instance.getAllDevice;
     console.log(getAllDevice);
     _.each(getAllDevice, function(device){
-       $http.jsonp('https://'+ roomDetail.domain + '/gpio2.php?device='+device +'&state='+value+'&callback=JSON_CALLBACK').success(function(data){
+       $http.jsonp('https://'+ roomDetail.domain + '/gpio2.php?device='+device.localUrl +'&state='+device.gpioPin+deviceValueBinary+'&callback=JSON_CALLBACK').success(function(data){
         console.log(value +' is '+value);
         HomeDetailService.setStatusOn(_instance.userId, $stateParams.roomId, 'cfl');
       })
@@ -58,8 +59,9 @@
   _instance.toggleSwitch = function(deviceValue, device){
     console.log(deviceValue);
     console.log(device);
+    var deviceValueBinary = deviceValue === true ? 1 : 0;
     // new code irrespective of device
-    $http.jsonp('https://'+ roomDetail.domain + '/gpio2.php?device='+device.localUrl +'&state='+deviceValue+'&callback=JSON_CALLBACK').success(function(data){
+    $http.jsonp('https://'+ roomDetail.domain + '/gpio2.php?device='+device.localUrl +'&state='+device.gpioPin+deviceValueBinary+'&callback=JSON_CALLBACK').success(function(data){
       console.log('success');
       HomeDetailService.setStatusOn(_instance.userId, $stateParams.roomId, 'cfl');
     })
