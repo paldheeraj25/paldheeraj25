@@ -1,5 +1,6 @@
-'Use Strict';
-homeAppController.controller('PowerController', function($scope, $state, $rootScope, $http, auth) {
+(function(){
+  'use strict';
+  homeAppController.controller('PowerController', ['$scope', '$state', '$rootScope', '$http', 'auth', function($scope, $state, $rootScope, $http, auth) {
   if(auth === null){
     $state.go('login');
   }
@@ -29,9 +30,10 @@ homeAppController.controller('PowerController', function($scope, $state, $rootSc
 
     });
     console.log('power off all');
-  };
-  _instance.powerOnAll = function(switchOnAll){
-    console.log(switchOnAll);
-    console.log('power on all');
-  };
-});
+    };
+    _instance.powerOnAll = function(switchOnAll){
+      console.log(switchOnAll);
+      console.log('power on all');
+    };
+  }]);
+})();

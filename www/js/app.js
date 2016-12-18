@@ -8,7 +8,7 @@
 var homeAppModule = angular.module('starter', ['ionic', 'starter.controllers', 'firebase', 'starter.services', 'ngMaterial', 'ngMessages', 'underscore', "ion-datetime-picker"]);
 var homeAppController = angular.module('starter.controllers', []);
 var homeAppService = angular.module('starter.services', []);
-homeAppModule.run(function($ionicPlatform) {
+homeAppModule.run(['$ionicPlatform', function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -22,10 +22,10 @@ homeAppModule.run(function($ionicPlatform) {
       StatusBar.styleDefault();
     }
   });
-})
+}])
 .constant('FURL', 'https://home-automation-ebe4b.firebaseio.com/')
 
-.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+.config(['$stateProvider', '$urlRouterProvider', '$ionicConfigProvider', function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
   //default tab moved to bottom all platform
   $ionicConfigProvider.tabs.position('bottom');
    $ionicConfigProvider.navBar.alignTitle('center');
@@ -162,4 +162,4 @@ homeAppModule.run(function($ionicPlatform) {
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/login');
 
-});
+}]);

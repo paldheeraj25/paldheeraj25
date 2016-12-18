@@ -1,5 +1,6 @@
-'Use Strict';
-homeAppController.controller('HomeController', function($scope, $state, auth, HomeService, roomList) {
+(function(){
+'use strict';
+homeAppController.controller('HomeController', ['$scope', '$state', 'auth', 'HomeService', 'roomList', function($scope, $state, auth, HomeService, roomList) {
   if(auth === null){
     $state.go('login');
   }
@@ -9,4 +10,5 @@ homeAppController.controller('HomeController', function($scope, $state, auth, Ho
   _instance.goToRoom = function(room){
     $state.go('tab.home-detail', {roomId: room.id});
   };
-});
+}]);
+})();

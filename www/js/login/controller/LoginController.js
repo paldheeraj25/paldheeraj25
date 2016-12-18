@@ -1,6 +1,7 @@
-'Use Strict';
-homeAppController.controller('LoginController', function($scope, $state, $ionicLoading, $ionicPopup, $firebaseArray, DatabaseConfig, Auth) {
-  _instance = this;
+(function(){
+  'use strict';
+  homeAppController.controller('LoginController', ['$scope', '$state', '$ionicLoading', '$ionicPopup', '$firebaseArray', 'DatabaseConfig', 'Auth' , function($scope, $state, $ionicLoading, $ionicPopup, $firebaseArray, DatabaseConfig, Auth) {
+  var _instance = this;
   // database initialisation service
   DatabaseConfig.dataBaseInitialized();
   // firebase.auth().createUserWithEmailAndPassword('admin@admin.com', 'admin@admin').catch(function(error) {
@@ -48,6 +49,7 @@ homeAppController.controller('LoginController', function($scope, $state, $ionicL
       // you can fetch the providers using this:
       _instance.loginErrorMessage = true;
       //_instance.showConfirm(error.code);
-    });
-  };
-});
+      });
+    };
+  }]);
+})();

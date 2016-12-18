@@ -1,6 +1,6 @@
 (function(){
 'use strict';
-  homeAppController.controller('HomeDetailController', function($http, $state, $stateParams, $rootScope, $scope,  $ionicModal, auth, roomId, roomDetail, HomeDetailService) {
+  homeAppController.controller('HomeDetailController', ['$http', '$state', '$stateParams', '$rootScope', '$scope',  '$ionicModal', 'auth', 'roomId', 'roomDetail', 'HomeDetailService' , function($http, $state, $stateParams, $rootScope, $scope,  $ionicModal, auth, roomId, roomDetail, HomeDetailService) {
   var _instance = this;
   _instance.userId = auth;
   _instance.roomId = roomId;
@@ -69,5 +69,5 @@
       console.log('error');
     });
   };
-});
+}]);
 }());
